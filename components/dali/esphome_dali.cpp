@@ -188,7 +188,9 @@ void DaliBusComponent::create_light_component(short_addr_t short_addr, uint32_t 
     // NOTE: Not freeing these strings, they will be owned by LightState.
 
     auto* light_state = new light::LightState { dali_light };
-    light_state->set_component_source("light");
+    light_state->set_component_source(
+    esphome::make_log_string("light")
+    );
     App.register_light(light_state);
     App.register_component(light_state);
     light_state->set_name(name);
